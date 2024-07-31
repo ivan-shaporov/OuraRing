@@ -1,6 +1,6 @@
 # OuraRing
 
-Oura Ring client, sample web hook Azure function and sample web hook sybscription client.
+Oura Ring client, sample web hook Azure function and sample web hook subscription client.
 
 ## Oura Ring client
 
@@ -18,13 +18,13 @@ To have web hooks working:
 1. Open this url in a web browser:
 https://cloud.ouraring.com/oauth/authorize?response_type=token&client_id=< client id >&redirect_uri=http%3A%2F%2F< host[:port] >%2Fapi%2FOAuth&scope=email+personal+daily+heartrate+workout+tag+session+spo2&state=somestate
 
-where:
-< client id > is your Oura Application client id.
-'< host[:port] >' is public address of the Azure function without `http://`.
-You can run it locally but need to setup TCP port forwarding and maje sure that your server is reachable by public IP.
+    where:
+    < client id > is your Oura Application client id.
+    '< host[:port] >' is public address of the Azure function without `http://`.
+    You can run it locally but need to setup TCP port forwarding and maje sure that your server is reachable by public IP.
 
-You will be asked to authorize the application for your own Oura user.
-Then the web hook will be called with a token and other data in the query string but they are not necessary for subscriptions to work.
+    You will be asked to authorize the application for your own Oura user.
+    Then the web hook will be called with a token and other data in the query string but they are not     necessary for subscriptions to work.
 
 1. See OuraControl project in this repository to see how to subscribe to the web hooks
 

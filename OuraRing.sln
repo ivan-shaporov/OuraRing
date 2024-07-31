@@ -3,7 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OuraControl", "OuraControl\OuraControl.csproj", "{031DDB68-994D-463F-9821-299646ADD67D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OuraHook", "OuraHook\OuraHook.csproj", "{86F33880-0880-4627-9E70-E98E83021E46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OuraRingClient", "OuraRingClient\OuraRingClient.csproj", "{BC1CA3B5-15A5-4968-B16D-959B195BB5F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B11E6067-DED2-4598-9D4D-BA014142188F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{031DDB68-994D-463F-9821-299646ADD67D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{031DDB68-994D-463F-9821-299646ADD67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{031DDB68-994D-463F-9821-299646ADD67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{031DDB68-994D-463F-9821-299646ADD67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86F33880-0880-4627-9E70-E98E83021E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86F33880-0880-4627-9E70-E98E83021E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86F33880-0880-4627-9E70-E98E83021E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86F33880-0880-4627-9E70-E98E83021E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1CA3B5-15A5-4968-B16D-959B195BB5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1CA3B5-15A5-4968-B16D-959B195BB5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1CA3B5-15A5-4968-B16D-959B195BB5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1CA3B5-15A5-4968-B16D-959B195BB5F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

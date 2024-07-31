@@ -5,6 +5,8 @@ Oura Ring client, sample web hook Azure function and sample web hook subscriptio
 ## Oura Ring client
 
 For simple data querying you need to pass single `oura_personal_token` parameter to the `OuraRingClient` constructor.
+See [https://github.com/ivan-shaporov/TrayHeartRate](https://github.com/ivan-shaporov/TrayHeartRate) repo for a usage example.
+
 
 ## Web hooks
 

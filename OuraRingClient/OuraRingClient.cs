@@ -29,7 +29,7 @@ namespace OuraRing
 
         public async Task<HeartRate?> GetHeartRateAsync(DateTimeOffset start)
         {
-            var url = new Uri($"https://api.ouraring.com/v2/usercollection/heartrate?start_datetime={start:yyyy-MM-ddTH:mm:ss}");
+            var url = new Uri($"https://api.ouraring.com/v2/usercollection/heartrate?start_datetime={start:yyyy-MM-ddTHH:mm:ss}");
 
             var root = await client.GetFromJsonAsync<ApiResultRoot>(url).ConfigureAwait(false);
 

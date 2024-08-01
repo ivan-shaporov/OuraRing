@@ -23,7 +23,7 @@ https://cloud.ouraring.com/oauth/authorize?response_type=token&client_id=< clien
     where:
     < client id > is your Oura Application client id.
     '< host[:port] >' is public address of the Azure function without `http://`.
-    You can run it locally but need to setup TCP port forwarding and maje sure that your server is reachable by public IP.
+    You can run it locally but need to setup TCP port forwarding and make sure that your server is reachable by public IP.
 
     You will be asked to authorize the application for your own Oura user.
     Then the web hook will be called with a token and other data in the query string but they are not     necessary for subscriptions to work.

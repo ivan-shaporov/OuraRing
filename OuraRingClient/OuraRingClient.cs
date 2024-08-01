@@ -31,11 +31,18 @@ namespace OuraRing
         {
             var url = new Uri($"https://api.ouraring.com/v2/usercollection/heartrate?start_datetime={start:yyyy-MM-ddTHH:mm:ss}");
 
-            var root = await client.GetFromJsonAsync<ApiResultRoot>(url).ConfigureAwait(false);
+            try
+            {
+                var root = await client.GetFromJsonAsync<ApiResultRoot>(url).ConfigureAwait(false);
 
-            var result = root?.Data.OrderBy(r => r.Timestamp).LastOrDefault();
+                var result = root?.Data.OrderBy(r => r.Timestamp).LastOrDefault();
 
-            return result;
+                return result;
+            }
+            catch (HttpRequestException)
+            {
+                throw new OuraClientException();
+            }
         }
 
         public async Task<Callback?> Subscribe(Callback cb)
@@ -44,12 +51,17 @@ namespace OuraRing
 
             var response = await client.PostAsJsonAsync(OuraApiBaseUrl, cb);
 
-            if (!response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.GatewayTimeout)
+            if (!response.IsSuccessStatusCode)
             {
-                return null;
+                if (response.StatusCode == HttpStatusCode.GatewayTimeout)
+                {
+                    return null;
+                }
+                else
+                {
+                    throw new OuraClientException();
+                }
             }
-
-            response.EnsureSuccessStatusCode();
 
             var result = await response.Content.ReadFromJsonAsync<Callback>();
             return result;
@@ -68,8 +80,30 @@ namespace OuraRing
             return await Subscribe(cb);
         }
 
-        public async Task<Callback[]> ListSubscribttions() => await client.GetFromJsonAsync<Callback[]>(OuraApiBaseUrl) ?? [];
+        public async Task<Callback[]> ListSubscribttions()
+        {
+            try
+            {
+                var result = await client.GetFromJsonAsync<Callback[]>(OuraApiBaseUrl) ?? [];
 
-        public async Task Unsubscribe(string id) => await client.DeleteAsync(new Uri(OuraApiBaseUrl, $"subscription/{id}"));
+                return result;
+            }
+            catch (HttpRequestException)
+            {
+                throw new OuraClientException();
+            }
+        }
+
+        public async Task Unsubscribe(string id)
+        {
+            try
+            {
+                await client.DeleteAsync(new Uri(OuraApiBaseUrl, $"subscription/{id}"));
+            }
+            catch (HttpRequestException)
+            {
+                throw new OuraClientException();
+            }
+        }
     }
 }

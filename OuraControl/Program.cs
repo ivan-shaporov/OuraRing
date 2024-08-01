@@ -54,7 +54,7 @@ async Task UnsubscribeAll()
 
 //await client.Unsubscribe(subscriptions.Single(s => s.DataType == DataType.tag && s.EventType == EventType.update).Id!);
 
-//await client.Subscribe(webHookUrl, DataType.tag, EventType.update);
+await client.Subscribe(webHookUrl, DataType.tag, EventType.update);
 
 foreach (var sub in subscriptions.Where(s => s.Id != null).OrderBy(s => s.DataType.ToString()).ThenBy(s => s.EventType.ToString()))
 {

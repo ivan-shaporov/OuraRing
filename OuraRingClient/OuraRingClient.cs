@@ -8,7 +8,7 @@ namespace OuraRing
     {
         private readonly HttpClient client = new();
 
-        private readonly Uri OuraApiBaseUrl = new("https://api.ouraring.com/v2/webhook/subscription");
+        private readonly Uri OuraSubscriptionApiBaseUrl = new("https://api.ouraring.com/v2/webhook/subscription");
 
         /// <summary>
         /// Constructor for querying data.
@@ -49,7 +49,7 @@ namespace OuraRing
         {
             cb.VerificationToken = $"{cb.DataType}_{cb.EventType}";
 
-            var response = await client.PostAsJsonAsync(OuraApiBaseUrl, cb);
+            var response = await client.PostAsJsonAsync(OuraSubscriptionApiBaseUrl, cb);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -84,7 +84,7 @@ namespace OuraRing
         {
             try
             {
-                var result = await client.GetFromJsonAsync<Callback[]>(OuraApiBaseUrl) ?? [];
+                var result = await client.GetFromJsonAsync<Callback[]>(OuraSubscriptionApiBaseUrl) ?? [];
 
                 return result;
             }
@@ -98,7 +98,7 @@ namespace OuraRing
         {
             try
             {
-                await client.DeleteAsync(new Uri(OuraApiBaseUrl, $"subscription/{id}"));
+                await client.DeleteAsync(new Uri(OuraSubscriptionApiBaseUrl, $"subscription/{id}"));
             }
             catch (HttpRequestException)
             {
